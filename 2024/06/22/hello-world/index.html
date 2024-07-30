@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="keywords" content="hexo, autumn" />
+    <title>
+        Cálculo Numérico
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
+     
+<link rel="stylesheet" href="/matematica-hexo/css/style.css">
+
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
+
+    <script>
+        infiniteScroll()
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const [
+                mainTitle,
+                mobileMenu,
+                mobileMainTitle,
+                mobileMenuBtn,
+                ipadMenuBtn,
+                aside,
+                closeBtn,
+            ] = getEle(
+                '#main-title',
+                '.mobile-menu',
+                '.mobile-menu h3',
+                '.mobile-menu button',
+                '.ipad-menu',
+                'aside',
+                'aside .close',
+            )
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].intersectionRatio <= 0) {
+                    mobileMainTitle.classList.remove('invisibile')
+                } else {
+                    mobileMainTitle.classList.add('invisibile')
+                }
+            })
+            io.observe(mainTitle)
+
+            clickToggleAside(mobileMenuBtn)
+            clickToggleAside(ipadMenuBtn)
+            clickToggleAside(closeBtn, false)
+
+            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
+            if (isMenuVisible) document.body.style.background = 'none'
+
+            function getEle(...args) {
+                return args.map(arg => document.querySelector(arg))
+            }
+
+            function clickToggleAside(btn, show = true) {
+                btn.addEventListener('click', function () {
+                    if (show) {
+                        aside.style.display = 'block'
+                    } else {
+                        aside.style.display = 'none'
+                    }
+                })
+            }
+        })
+    </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+    <div class="container">
+        <header class="header">
+    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <h3 class="invisibile">
+            <a href="/matematica-hexo/" class="logo">
+                Cálculo Numérico
+            </a>
+        </h3>
+        <button class="menu">menu</button>
+    </nav>
+
+    <button class="ipad-menu menu">menu</button>
+
+    <h1 class="title" id="main-title">
+        <a href="/matematica-hexo/" class="logo">
+            Cálculo Numérico
+        </a>
+    </h1>
+    <h2 class="desc">
+        Métodos Numéricos para Ajuste de Curvas
+    </h2>
+
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/MatheusTHg">
+                    Github
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/">
+                    LinkedIn
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</header>
+        <main class="main">
+            <article class="post">
+    
+    
+    
+    <h2 class="post-title">
+        Matematica - Métodos Numéricos para Ajuste de Curvas
+    </h2>
+    <ul class="post-date">
+        <li>
+            2024-06-22
+        </li>
+        <li>
+            Matheus Henrique Trevisan
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>Me chamo Matheus, sou estudante do curso Ciencias da Computação na Unifil, esse blog surgiu para realizar uma atividade da matéria de Calculo Numérico: Métodos Numéricos para Ajuste de Curvas.<br>Para realizar cada uma das atividas, optei pelo JS para realizar os scripts, para a estilização do front-end, foi utilizado o HTML com CSS.</p>
+<h2 id="Atividades"><a href="#Atividades" class="headerlink" title="Atividades"></a>Atividades</h2><hr>
+<h3 id="Metodo-de-Newton"><a href="#Metodo-de-Newton" class="headerlink" title="Método de Newton"></a>Método de Newton</h3><p>O Método de Newton (Diferenças Divididas), é uma técnica iterativa para encontrar aproximações das raízes de uma função real f(x)&#x3D;0.</p>
+<p>Este método é conhecido por sua rápida convergência quando a estimativa inicial está próxima da raiz e a função é bem comportada.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> newtonInterpolation(x, y, value) &#123;</span><br><span class="line">    const n = x.length;</span><br><span class="line">    const divDiffTable = createDividedDifferenceTable(x, y);</span><br><span class="line">    const steps = document.getElementById(<span class="string">&#x27;steps&#x27;</span>);</span><br><span class="line">    steps.innerHTML = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    steps.innerHTML += <span class="string">&#x27;&lt;p&gt;Valores dos pontos:&lt;/p&gt;&#x27;</span>;</span><br><span class="line">    x.forEach((xi, i) =&gt; &#123;</span><br><span class="line">        steps.innerHTML += `&lt;p&gt;x<span class="variable">$&#123;i&#125;</span> = <span class="variable">$&#123;xi&#125;</span>, y<span class="variable">$&#123;i&#125;</span> = <span class="variable">$&#123;y[i]&#125;</span>&lt;/p&gt;`;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    steps.innerHTML += &#x27;&lt;p&gt;Tabela de Diferenças Divididas:&lt;/p&gt;&#x27;;</span><br><span class="line">    divDiffTable.forEach((row, i) =&gt; &#123;</span><br><span class="line">        steps.innerHTML += `&lt;p&gt;<span class="variable">$&#123;row.join(&#x27;, &#x27;)&#125;</span>&lt;/p&gt;`;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return interpolation;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function createDividedDifferenceTable(x, y) &#123;</span><br><span class="line">    const n = x.length;</span><br><span class="line">    const table = Array.from(&#123; length: n &#125;, () =&gt; Array(n).fill(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        table[i][0] = y[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> j = 1; j &lt; n; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; n - j; i++) &#123;</span><br><span class="line">            table[i][j] = (table[i + 1][j - 1] - table[i][j - 1]) / (x[i + j] - x[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> table;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Metodo-de-Lagrange"><a href="#Metodo-de-Lagrange" class="headerlink" title="Método de Lagrange"></a>Método de Lagrange</h3><p>O Método de Lagrange é uma técnica para interpolação polinomial, usada para encontrar o polinômio de grau n que passa por n+1 pontos dados.</p>
+<p>Este método é útil para aproximar funções e valores desconhecidos dentro do intervalo dos pontos conhecidos.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">calculateInterpolation</span></span>() &#123;</span><br><span class="line">    const numPoints = parseInt(document.getElementById(<span class="string">&#x27;numPointsInput&#x27;</span>).value);</span><br><span class="line">    const interpolateAt = parseFloat(document.getElementById(<span class="string">&#x27;interpolateAt&#x27;</span>).value);</span><br><span class="line">    const method = document.getElementById(<span class="string">&#x27;methodSelect&#x27;</span>).value;</span><br><span class="line"></span><br><span class="line">    const x = [], y = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; numPoints; i++) &#123;</span><br><span class="line">        x.push(parseFloat(document.getElementById(`x<span class="variable">$&#123;i&#125;</span>`).value));</span><br><span class="line">        y.push(parseFloat(document.getElementById(`y<span class="variable">$&#123;i&#125;</span>`).value));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">let</span> result;</span><br><span class="line">    <span class="keyword">if</span> (method === <span class="string">&#x27;lagrange&#x27;</span>) &#123;</span><br><span class="line">        result = lagrangeInterpolation(x, y, interpolateAt);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&#x27;newton&#x27;</span>) &#123;</span><br><span class="line">        result = newtonInterpolation(x, y, interpolateAt);</span><br><span class="line">    &#125;</span><br><span class="line">    document.getElementById(<span class="string">&#x27;result&#x27;</span>).innerText = `Resultado: <span class="variable">$&#123;result&#125;</span>`;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> lagrangeInterpolation(x, y, value) &#123;</span><br><span class="line">    const n = x.length;</span><br><span class="line">    const steps = document.getElementById(<span class="string">&#x27;steps&#x27;</span>);</span><br><span class="line">    steps.innerHTML = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    steps.innerHTML += <span class="string">&#x27;&lt;p&gt;Valores dos pontos:&lt;/p&gt;&#x27;</span>;</span><br><span class="line">    x.forEach((xi, i) =&gt; &#123;</span><br><span class="line">        steps.innerHTML += `&lt;p&gt;x<span class="variable">$&#123;i&#125;</span> = <span class="variable">$&#123;xi&#125;</span>, y<span class="variable">$&#123;i&#125;</span> = <span class="variable">$&#123;y[i]&#125;</span>&lt;/p&gt;`;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    let interpolation = <span class="number">0</span>;</span><br><span class="line">    let polynomialTerms = `P(<span class="variable">$&#123;value&#125;</span>) = `;</span><br><span class="line"></span><br><span class="line">    for (let i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        let term = y[i];</span><br><span class="line">        let termDetails = `<span class="variable">$&#123;y[i]&#125;</span>`;</span><br><span class="line"></span><br><span class="line">        for (let j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            if (i !== j) &#123;</span><br><span class="line">                term *= (value - x[j]) / (x[i] - x[j]);</span><br><span class="line">                termDetails += ` * (<span class="variable">$&#123;value&#125;</span> - <span class="variable">$&#123;x[j]&#125;</span>) / (<span class="variable">$&#123;x[i]&#125;</span> - <span class="variable">$&#123;x[j]&#125;</span>)`;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        polynomialTerms += ` + <span class="variable">$&#123;termDetails&#125;</span>`;</span><br><span class="line">        interpolation += term;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    steps.innerHTML += `&lt;p&gt;<span class="variable">$&#123;polynomialTerms&#125;</span>&lt;/p&gt;`;</span><br><span class="line">    return interpolation;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Folha-da-Arvore"><a href="#Folha-da-Arvore" class="headerlink" title="Folha da Árvore"></a>Folha da Árvore</h3><p>Nessa atividade prática, utilizamos uma folha qualquer para aplicarmos na prática o Método de Newton.<br>Primeiramente tiramos algumas medidas (x, y) da folha utilizando a régua, após isso, escolhemos um valor entre os pontos medidos para que fosse interpolado; feita a interpoação, validamos com a medida real da folha, assim, verificando a margem de erro com base nos dados fornecidos e calculado.</p>
+<p><img src="/matematica-hexo/img/atvFolha.jpg" alt="Dados da Folha"></p>
+<p>Dados Medidos<br>Pontos escolhidos:<br>(1,7 ; 1,29)<br>(3,1 ; 1,70)<br>(6,0 ; 1,70)<br>(7,0 ; 1,20)<br>(8,9 ; 0,30)</p>
+<p>PONTO PARA INTERPOLAR:<br>x &#x3D; 5,20<br>y &#x3D; 1,717049721715434</p>
+<p>PONTO REAL:<br>x &#x3D; 5,20<br>y &#x3D; 1,75</p>
+<p>ERRO:<br>~1,9% (aproximado)<br>1,882873044832343% (real)</p>
+<hr>
+<h3 id="Lista"><a href="#Lista" class="headerlink" title="Lista"></a>Lista</h3><p>Nessa atividade, recebemos 3 exercicios para aplicarmos os códigos que criamos no decorrer das aulas</p>
+<p><img src="/matematica-hexo/img/atvLista1.jpg" alt="Atvidade 1"><br><img src="/matematica-hexo/img/atvLista2.jpg" alt="Atvidade 2"><br><img src="/matematica-hexo/img/atvLista3.jpg" alt="Atvidade 3"></p>
+
+    </div>
+</article>
+        </main>
+        <aside class="aside">
+            <div class="close"></div>
+            <section class="aside-section">
+                
+    <h1>Categories</h1>
+
+    
+
+            </section>
+            <section class="aside-section">
+                
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/matematica-hexo/archives/2024/">2024</a></li></ul>
+
+
+            </section>
+            <section class="aside-section tag">
+                
+    <h1>Tags</h1>
+
+    
+
+            </section>
+        </aside>
+    </div>
+</body>
+
+</html>
